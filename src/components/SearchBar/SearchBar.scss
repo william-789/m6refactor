@@ -1,0 +1,38 @@
+@import "../../variables";
+.bar.search-bar {
+  width: 100%;
+  padding: 10px;
+  border-radius: 1rem;
+  background-color: $bg-main-dark;
+  position: fixed; // doesn't work???
+  top: 0;
+  left: 0;
+  z-index: 100;
+  .search-box {
+    margin: 0 auto;
+    max-width: 500px;
+    background-color: $bg-gray;
+    border-radius: 1rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 4px;
+    #input {
+      height: 100%;
+      flex: 1;
+      border-radius: 1rem;
+      border: none;
+      background-color: inherit;
+      outline: none;
+      color: $font-unavailable;
+    }
+    #search-button {
+      height: 100%;
+      border-radius: 1rem;
+      background-color: inherit;
+      border: none;
+      cursor: pointer;
+    }
+  }
+}

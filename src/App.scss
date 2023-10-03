@@ -1,0 +1,120 @@
+/* variables */
+@import "variables";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;400;700&display=swap');
+* {
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+html, body {
+  font-size: $ref-font-size;
+  margin: 0;
+  padding: 0;
+  color: $main-font-gray;
+  background-color: $bg-main-dark;
+}
+
+.App {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  align-items: center;
+}
+.page {
+  width: 100vw;
+  max-width: 500px;
+  min-height: 100vh;
+  padding: 15px 20px;
+  overflow: auto;
+  > h1 {
+    margin: 10px 0;
+  }
+}
+h1, h2, h3, p {
+  margin: 0;
+}
+h1 {
+  font-size: $title;
+}
+.title-non-bold { // !!!!
+  font-size: $title;
+  font-weight: 400;
+}
+h3, p {
+  font-size: $small-font;
+}
+span {
+  font-size: $medium-font;
+  color: $orange-font;
+}
+.side-info {
+  background-color: $bg-main-dark;
+  font-size: $small-font;
+  padding: 0.35rem;
+  border-radius: 0.25rem;
+}
+.side-info.like {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 0.75rem;
+  cursor: pointer;
+}
+.container {
+  width: 100%;
+  margin-bottom: 10px;
+  > h1 {
+    margin-bottom: 10px;
+  }
+}
+hr {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+// pills *******
+.pill {
+  width: 100%;
+  height: 5rem;
+  background-image: linear-gradient(270deg, $bg-gray 0%, $bg-main-dark 76.56%, $bg-main-dark 100%);
+  transition: background 2s ease;
+  display: flex;
+  margin-bottom: 10px;
+  border-radius: 2.5rem;
+  &:hover {
+    background-image: linear-gradient(270deg, $bg-orange 0%, $bg-main-dark 76.56%, $bg-main-dark 100%);
+    transition: background 1s ease;
+  }
+  .img-div, img {
+    width: 5rem;
+    height: 100%;
+    border-radius: 2.5rem;
+  }
+  .info {
+    flex: 1;
+    padding: 0.5rem 1.6rem 0.5rem 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &.movement {
+    .img-div{
+      background-color: $bg-gray;
+      display: flex;
+      align-items: center;
+      img {
+        height: 50%;
+      }
+    }
+    &.green {
+      span {
+        color: $font-green;
+      }
+    }
+    &.available {
+      cursor: pointer;
+    }
+    &.unavailable * {
+      color: $font-unavailable;
+    }
+  }
+}

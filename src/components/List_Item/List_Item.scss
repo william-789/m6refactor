@@ -1,0 +1,22 @@
+.pill.list-item {
+  border-radius: 1rem;
+  img {
+    width: 5rem;
+    border-radius: 1rem 0 0 1rem;
+  }
+  .info {
+    padding: 1rem;
+    .side-info.like {
+      width: 1.5rem;
+      height: 1.5rem;
+      border-radius: 0.75rem;
+      cursor: pointer;
+    }
+  }
+  &.round {
+    border-radius: 2.5rem;
+    img {
+      border-radius: 2.5rem;
+    }
+  }
+}
