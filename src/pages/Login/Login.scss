@@ -20,7 +20,9 @@
       padding: 0;
     }
   }
-  small {
+  .error {
     color: red;
+    font-size: small;
+    text-align: center;
   }
 }
