@@ -3,10 +3,10 @@ import React, { useState } from "react";
 const UserContext = React.createContext({});
 
 function UserProvider (props) {
-  const [userData, setUserData] = useState({}) // {nome: , email:}
+  const [userData, setUserData] = useState({}) // {name: , email:}
 
   function isLogged() {
-    return !!(userData.nome && userData.email)
+    return !!(userData.name && userData.email)
   }
 
   return <UserContext.Provider value={{userData,setUserData, isLogged}}>
