@@ -4,6 +4,7 @@ import SearchBar from "../../components/SearchBar/SearchBar";
 import ListItem from "../../components/List_Item/ListItem";
 import { useState, useEffect } from "react";
 import Pagination from "../../components/Pagination/Pagination";
+import { Link } from "react-router-dom"; 
 
 function Search() {
   const [events, setEvents] = useState(null)
@@ -88,7 +89,9 @@ function Search() {
           <p>Sem eventos encontrados.</p>
         ) : (
           events.map((e) => (
-            <ListItem key={e.id+"e"} imagem={e.imagem} title={e.designacao} line2={e.local} />
+            <Link to={`/festival/${e.id}`}>
+              <ListItem key={e.id+"e"} imagem={e.imagem} title={e.designacao} line2={e.local} />
+            </Link>
           ))
         ))}
       {!filtro && <h1>Artistas</h1>}
@@ -97,17 +100,27 @@ function Search() {
           <p>Sem artistas encontrados.</p>
         ) : (
           artists.map((a) => (
-            <ListItem key={a.id+"a"} round={true} imagem={a.imagem} title={a.nome} line2={"Artista"} />
+            <Link to={`/artist/${a.id}`}>
+              <ListItem key={a.id+"a"} round={true} imagem={a.imagem} title={a.nome} line2={"Artista"} />
+            </Link>
           ))
         ))}
   
       {filtro &&
         searchResults.map((r) => {
-          if (r.type === "event") return <ListItem key={r.id+"e"} imagem={r.imagem} title={r.designacao} line2={r.local} />;
-          return <ListItem key={r.id+"a"} round={true} imagem={r.imagem} title={r.nome} line2={"Artista"} />;
+          if (r.type === "event") 
+          return (
+          <Link to={`/festival/${r.id}`}>
+            <ListItem key={r.id+"e"} imagem={r.imagem} title={r.designacao} line2={r.local} />
+          </Link>);
+          
+          return (
+          <Link to={`/artist/${r.id}`}>
+            <ListItem key={r.id+"a"} round={true} imagem={r.imagem} title={r.nome} line2={"Artista"} />
+          </Link>);
         })}
       {filtro && searchResults.length === 0 && <p>Sem resultados encontrados.</p>}
-      { // add PAGING
+      {
         filtro && !singlePage && <Pagination page={page} setPage={setPage} lastPage={lastPage}/>
       }
     </div>
