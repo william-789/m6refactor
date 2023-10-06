@@ -1,0 +1,23 @@
+@import "../../variables.scss";
+
+.Pagination {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  > div {
+    width: 2.5rem;
+    height: 2.5rem; 
+    cursor: pointer;
+    background-color: $bg-gray;
+    border-radius: 5rem;
+    margin: 0 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &.unactive {
+      color: $font-unavailable;
+      pointer-events: none;
+      cursor: context-menu;
+    }
+  }
+}
