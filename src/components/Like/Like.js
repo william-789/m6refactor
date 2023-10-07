@@ -6,7 +6,7 @@ import ticket from "../../assets/icons/nav_ticket_active.svg";
 import {UserContext} from "../../context/UserContext";
 import axiosfest from "../../services/axiosfest";
 
-function Like({ type = "like", liked = false, favType, favEl }) {
+function Like({ type = "like", liked = false, favType, favEl, idFav }) {
   const { userData, toggleFavLocal } = useContext(UserContext)
   const { email } = userData
   const [isLiked, setIsLiked] = useState(liked);
@@ -14,10 +14,15 @@ function Like({ type = "like", liked = false, favType, favEl }) {
   const toggleFav = async () => {
     const favPath = favType === "event" ? 'toggle_evento' : 'toggle_artista'
     const fav = favType === "event" ? 'evento' : 'artista'
-    await axiosfest.post(`/participante/favoritos/${favPath}`, {
-      participante: email,
-      [fav]: favEl.id
-    })
+    try {
+      await axiosfest.post(`/participante/favoritos/${favPath}`, {
+        participante: email,
+        [fav]: idFav
+      })
+    } catch (e) {
+      console.log(e)
+    }
+
     toggleFavLocal(favEl)
     setIsLiked(!isLiked)
   }

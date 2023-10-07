@@ -6,14 +6,23 @@ import { UserContext } from "../../context/UserContext";
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
+import axiosFest from "../../services/axiosfest";
 
 function Login() {
-  const { setUserData } = useContext(UserContext);
+  const { setUserData, setFavorites } = useContext(UserContext);
   const history = useHistory();
   const { control, handleSubmit, formState: { errors } } = useForm();
 
+  const getFav = async(email) => {
+    await axiosFest.get("/participante/favoritos/listar", {params: {participante: email}})
+        .then((res) => {
+          setFavorites(res.data.favoritos)
+        })
+  }
+
   const onSubmit = (data) => {
     setUserData(data);
+    getFav(data.email);
     history.push("/home");
   };
 
