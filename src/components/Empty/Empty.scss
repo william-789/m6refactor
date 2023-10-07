@@ -1,0 +1,18 @@
+@import "../../variables";
+.Empty {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 3rem;
+  img {
+    height: 100%;
+  }
+  * {
+    margin: 0 10px;
+  }
+  p {
+    color: $font-unavailable;
+    font-size: $medium-font;
+  }
+}
