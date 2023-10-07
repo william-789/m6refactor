@@ -1,26 +1,76 @@
-.pill.list-item {
-  border-radius: 1rem;
-  img {
+@import "../../variables";
+.pill {
+  width: 100%;
+  height: 5rem;
+  background-image: linear-gradient(270deg, $bg-gray 0%, $bg-main-dark 76.56%, $bg-main-dark 100%);
+  transition: background 2s ease;
+  display: flex;
+  margin-bottom: 10px;
+  border-radius: 2.5rem;
+  &:not(.unavailable):hover {
+    background-image: linear-gradient(270deg, $bg-orange 0%, $bg-main-dark 76.56%, $bg-main-dark 100%);
+    transition: background 1s ease;
+  }
+  .img-div, img {
     width: 5rem;
-    border-radius: 1rem 0 0 1rem;
+    height: 100%;
+    border-radius: 2.5rem;
   }
   .info {
-    padding: 1rem;
-    .side-info.like {
-      width: 1rem;
-      height: 1rem;
-      border-radius: 1rem;
-      cursor: pointer;
-      &.ticket {
-        width: 1.75rem;
-        height: 1.75rem;
-      }
+    flex: 1;
+    padding: 0.5rem 1.6rem 0.5rem 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    a {
+      flex: 1;
     }
   }
-  &.round {
-    border-radius: 2.5rem;
+  &.movement {
+    .img-div{
+      background-color: $bg-gray;
+      display: flex;
+      align-items: center;
+      img {
+        height: 50%;
+      }
+    }
+    &.green {
+      span {
+        color: $font-green;
+      }
+    }
+    &.available {
+      cursor: pointer;
+    }
+    &.unavailable * {
+      color: $font-unavailable;
+    }
+  }
+  &.list-item {
+    border-radius: 1rem;
     img {
+      width: 5rem;
+      border-radius: 1rem 0 0 1rem;
+    }
+    .info {
+      padding: 1rem;
+      .side-info.like {
+        width: 1rem;
+        height: 1rem;
+        border-radius: 1rem;
+        cursor: pointer;
+        &.ticket {
+          width: 1.75rem;
+          height: 1.75rem;
+        }
+      }
+    }
+    &.round {
       border-radius: 2.5rem;
+      img {
+        border-radius: 2.5rem;
+      }
     }
   }
 }

@@ -6,8 +6,10 @@ function ListItem({round = false, image, title, line2, line3, liked = false, fav
   return (
     <div className={`pill list-item  ${round ? 'round' : ''}`}>
       <Link to={path}>
-        <img alt={title}
-             src={baseImgLink + image}/>
+        <div className={"img-div"}>
+          <img alt={title}
+               src={baseImgLink + image}/>
+        </div>
       </Link>
         <div className="info">
           <Link to={path}>
@@ -24,3 +26,30 @@ function ListItem({round = false, image, title, line2, line3, liked = false, fav
 }
 
 export default ListItem
+
+function Pill({ image, title, line2, line3, price, available }) {
+  const handleClick = () => {
+    console.log("Executed");
+  };
+  
+  return (
+    <div className={`pill movement ${ available ? "available" : 'unavailable' }`} onClick={available ? handleClick : null}>
+      <div className="img-div">
+        <img alt={title} src={image} />
+      </div>
+      <div className="info">
+        <div className="text">
+          { title && <h1>{title}</h1> }
+          <span>{line2}</span>
+          {line3 && <p>{line3}</p>}
+        </div>
+        <p className="side-info">{price.toFixed(2)} €</p>
+      </div>
+    </div>
+  );
+}
+
+export {
+  ListItem,
+  Pill
+}
