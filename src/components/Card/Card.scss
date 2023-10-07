@@ -1,0 +1,55 @@
+@import "../../variables.scss";
+.Card {
+  position: relative;
+  width: 100%;
+  padding-top: 80%;
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 10px;
+  border-radius: 1.5rem;
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-radius: 1.5rem;
+    background: linear-gradient(180deg, rgba(50, 50, 50, 0.00) 0%, $bg-gray 75.11%, $bg-gray 100%);
+  }
+  .info {
+    position: absolute;
+    display: flex;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 5%;
+    .text {
+      padding-left: 5%;
+      .side-info {
+        margin-top: 5%;
+        display: inline-block;
+      }
+    }
+  }
+  &.bought {
+    padding-top: 40%;
+    .side-info.current {
+      background-color: $orange-font;
+      position: absolute;
+      top: 5%;
+      left: 10%;
+    }
+    &::after {
+      position: absolute;
+      content: '';
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 17%;
+      border-left: $orange-font dashed;
+    }
+  }
+}
