@@ -17,12 +17,9 @@ function Tickets() {
   const [pastEvents, setPastEvents] = useState(null)
 
   const getData = async() => {
-    console.log("userData",userData)
     const { email } = userData
-    console.log("email", email);
     await axiosFest.get("participante/bilhetes/listar", {params: {participante: email}})
     .then((res) => {
-      console.log("data",res.data);
       setCurrentEvent(res.data.atuais[0])
       if(currentEvent) setCash(currentEvent.conta_cashless.valor_atual)
       setFutureEvents(res.data.futuros)
