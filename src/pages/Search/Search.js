@@ -2,11 +2,13 @@ import "./Search.scss"
 import axiosFest from "../../services/axiosfest";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import ListItem from "../../components/List_Item/ListItem";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Pagination from "../../components/Pagination/Pagination";
-import { Link } from "react-router-dom"; 
+import { Link } from "react-router-dom";
+import {UserContext} from "../../context/UserContext";
 
 function Search() {
+  const { isFavorite } = useContext(UserContext)
   const [events, setEvents] = useState(null)
   const [artists, setArtists] = useState(null)
   const [eventsNext, setEventsNext] = useState([])
@@ -90,7 +92,7 @@ function Search() {
         ) : (
           events.map((e) => (
             <Link to={`/festival/${e.id}`}>
-              <ListItem key={e.id+"e"} image={e.imagem} title={e.designacao} line2={e.data.slice(0,10)} line3={e.local} />
+              <ListItem key={e.id+"e"} image={e.imagem} title={e.designacao} line2={e.data.slice(0,10)} line3={e.local} el={e} favType={"event"} liked={isFavorite(e)}/>
             </Link>
           ))
         ))}
@@ -101,7 +103,7 @@ function Search() {
         ) : (
           artists.map((a) => (
             <Link to={`/artist/${a.id}`}>
-              <ListItem key={a.id+"a"} round={true} image={a.imagem} title={a.nome} line2={"Artista"} />
+              <ListItem key={a.id+"a"} round={true} image={a.imagem} title={a.nome} line2={"Artista"} el={a} favType={"artist"} liked={isFavorite(a)}/>
             </Link>
           ))
         ))}
@@ -111,12 +113,12 @@ function Search() {
           if (r.type === "event") 
           return (
           <Link to={`/festival/${r.id}`}>
-            <ListItem key={r.id+"e"} image={r.imagem} title={r.designacao} line2={r.data.slice(0,10)} line3={r.local} />
+            <ListItem key={r.id+"e"} image={r.imagem} title={r.designacao} line2={r.data.slice(0,10)} line3={r.local} el={r} favType={"event"} liked={isFavorite(r)} />
           </Link>);
           
           return (
           <Link to={`/artist/${r.id}`}>
-            <ListItem key={r.id+"a"} round={true} image={r.imagem} title={r.nome} line2={"Artista"} />
+            <ListItem key={r.id+"a"} round={true} image={r.imagem} title={r.nome} line2={"Artista"} el={r} favType={"artist"} liked={isFavorite(r)}/>
           </Link>);
         })}
       {filtro && searchResults.length === 0 && <p>Sem resultados encontrados.</p>}

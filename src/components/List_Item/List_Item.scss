@@ -7,10 +7,14 @@
   .info {
     padding: 1rem;
     .side-info.like {
-      width: 1.5rem;
-      height: 1.5rem;
-      border-radius: 0.75rem;
+      width: 1rem;
+      height: 1rem;
+      border-radius: 1rem;
       cursor: pointer;
+      &.ticket {
+        width: 1.75rem;
+        height: 1.75rem;
+      }
     }
   }
   &.round {
