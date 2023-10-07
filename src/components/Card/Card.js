@@ -16,7 +16,10 @@ function Card({ bought, current, image, title, line2, line3, price, liked }) {
           <h1>{title.toUpperCase()}</h1>
           <span>{line2}</span>
           <p>{line3}</p>
-          {price && <p className="side-info">{price.toFixed(2)} €</p>}
+          {price && typeof price === 'number' ?
+            <p className="side-info">{price.toFixed(2)} €</p>
+            : <p className="side-info">{price}</p>
+          }
         </div>
         {bought ? (
           null
