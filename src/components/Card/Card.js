@@ -4,16 +4,16 @@ import { baseImgLink } from "../../services/axiosfest";
 import Like from "../Like/Like";
 import {Link} from "react-router-dom";
 
-function Card({ bought, current, image, title, line2, line3, price, liked, path }) {
+function Card({ bought, clear = false, current, image, title, line2, line3, price, liked, path, favType, idEl }) {
   const bgImg = {
     backgroundImage: `url("${baseImgLink + image}")`
   };
 
   return (
-    <div className={`Card ${bought ? 'bought' : ''}`} style={bgImg}>
+    <div className={`Card ${bought ? 'bought' : ''} ${clear? 'clear' : ''}`} style={bgImg}>
       {current && <p className="side-info current">a acontecer</p>}
       <div className="info">
-        <Link to={path}>
+        {!clear && <Link to={path}>
           <div className="text">
             <h1>{title.toUpperCase()}</h1>
             <span>{line2}</span>
@@ -23,12 +23,12 @@ function Card({ bought, current, image, title, line2, line3, price, liked, path 
               : <p className="side-info">{price}</p>
             }
           </div>
-        </Link>
+        </Link>}
         
         {bought ? (
           null
         ) : (
-          <Like liked={liked} />
+          <Like liked={liked} favType={favType} idFav={idEl}/>
         )}
       </div>
     </div>

@@ -2,7 +2,7 @@
 .Card {
   position: relative;
   width: 100%;
-  padding-top: 80%;
+  padding-top: 85%;
   background-size: cover;
   background-position: center;
   margin-bottom: 15px;
@@ -53,6 +53,15 @@
       bottom: 0;
       width: 17%;
       border-left: $orange-font dashed;
+    }
+  }
+  &.clear {
+    padding-top: 60%;
+    .info {
+      justify-content: flex-end;
+    }
+    &::before {
+      background: none;
     }
   }
 }

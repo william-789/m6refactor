@@ -2,7 +2,7 @@ import './List_Item.scss'
 import { baseImgLink } from "../../services/axiosfest";
 import Like from "../Like/Like";
 import {Link} from "react-router-dom";
-function ListItem({round = false, image, title, line2, line3, liked = false, el, favType, iconType, idEl, path}) {
+function ListItem({round = false, image, title, line2, line3, liked = false, favType, iconType, idEl, path}) {
   return (
     <div className={`pill list-item  ${round ? 'round' : ''}`}>
       <Link to={path}>
@@ -17,7 +17,7 @@ function ListItem({round = false, image, title, line2, line3, liked = false, el,
               {line3 && <p>{line3}</p>}
             </div>
           </Link>
-          <Like liked={liked} favEl={el} favType={favType} type={iconType} idFav={idEl}/>
+          <Like liked={liked} favType={favType} type={iconType} idFav={idEl}/>
         </div>
     </div>
   )

@@ -90,7 +90,7 @@ function Search() {
           <p>Sem eventos encontrados.</p>
         ) : (
           events.map((e) => (
-              <ListItem key={e.id+"e"} image={e.imagem} title={e.designacao} line2={e.data.slice(0,10)} line3={e.local} el={e} idEl={e.id} favType={"event"} liked={isFavorite(e)} path={`/festival/${e.id}`}/>
+              <ListItem key={e.id+"e"} image={e.imagem} title={e.designacao} line2={e.data.slice(0,10)} line3={e.local} idEl={e.id} favType={"event"} liked={isFavorite(e.id,"evento")} path={`/festival/${e.id}`}/>
           ))
         ))}
       {!filtro && <h1>Artistas</h1>}
@@ -99,7 +99,7 @@ function Search() {
           <p>Sem artistas encontrados.</p>
         ) : (
           artists.map((a) => (
-              <ListItem key={a.id+"a"} round={true} image={a.imagem} title={a.nome} line2={"Artista"} el={a} idEl={a.id} favType={"artist"} liked={isFavorite(a)} path={`/artist/${a.id}`}/>
+              <ListItem key={a.id+"a"} round={true} image={a.imagem} title={a.nome} line2={"Artista"} idEl={a.id} favType={"artist"} liked={isFavorite(a.id,"artista")} path={`/artist/${a.id}`}/>
           ))
         ))}
   
@@ -107,11 +107,11 @@ function Search() {
         searchResults.map((r) => {
           if (r.type === "event") 
           return (
-            <ListItem key={r.id+"e"} image={r.imagem} title={r.designacao} line2={r.data.slice(0,10)} line3={r.local} el={r} idEl={r.id} favType={"event"} liked={isFavorite(r)} path={`/festival/${r.id}`}/>
+            <ListItem key={r.id+"e"} image={r.imagem} title={r.designacao} line2={r.data.slice(0,10)} line3={r.local} idEl={r.id} favType={"event"} liked={isFavorite(r.id,"evento")} path={`/festival/${r.id}`}/>
           );
           
           return (
-            <ListItem key={r.id+"a"} round={true} image={r.imagem} title={r.nome} line2={"Artista"} el={r} favType={"artist"} idEl={r.id} liked={isFavorite(r)} path={`/artist/${r.id}`}/>
+            <ListItem key={r.id+"a"} round={true} image={r.imagem} title={r.nome} line2={"Artista"} favType={"artist"} idEl={r.id} liked={isFavorite(r.id,"artista")} path={`/artist/${r.id}`}/>
          );
         })}
       {filtro && searchResults.length === 0 && <p>Sem resultados encontrados.</p>}

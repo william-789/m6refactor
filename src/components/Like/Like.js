@@ -6,7 +6,7 @@ import ticket from "../../assets/icons/nav_ticket_active.svg";
 import {UserContext} from "../../context/UserContext";
 import axiosfest from "../../services/axiosfest";
 
-function Like({ type = "like", liked = false, favType, favEl, idFav }) {
+function Like({ type = "like", liked = false, favType, idFav }) {
   const { userData, toggleFavLocal } = useContext(UserContext)
   const { email } = userData
   const [isLiked, setIsLiked] = useState(liked);
@@ -23,7 +23,7 @@ function Like({ type = "like", liked = false, favType, favEl, idFav }) {
       console.log(e)
     }
 
-    toggleFavLocal(favEl)
+    toggleFavLocal(idFav, fav)
     setIsLiked(!isLiked)
   }
 

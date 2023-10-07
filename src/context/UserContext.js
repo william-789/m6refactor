@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axiosFest from "../services/axiosfest";
 
 const UserContext = React.createContext({});
 
@@ -10,16 +11,16 @@ function UserProvider (props) {
     return !!(userData.name && userData.email)
   }
 
-  function isFavorite(el) {
-    return favorites.includes(el)
+  function isFavorite(idEl, type) {
+    return favorites.some((el) => el.id === idEl && el.tipo === type)
   }
 
-  function toggleFavLocal(el) {
-    if(isFavorite(el)) {
-      const listWithoutEl = favorites.filter((favEl) => favEl !== el)
+  function toggleFavLocal(id, tipo) {
+    if(isFavorite(id, tipo)) {
+      const listWithoutEl = favorites.filter((el) => el.id !== id && el.tipo !== tipo)
       setFavorites(listWithoutEl)
     } else {
-      setFavorites([...favorites, el])
+      setFavorites([...favorites, { id, tipo }])
     }
   }
 
