@@ -7,7 +7,6 @@ import ListItem from "../../components/List_Item/ListItem"
 import ticket from "../../assets/icons/nav_ticket_active.svg"
 import qrCode from "../../assets/icons/qr.svg"
 import cashIcon from "../../assets/icons/cash.svg"
-import {Link} from "react-router-dom";
 
 function Tickets() {
   const { userData, isFavorite } = useContext(UserContext)
@@ -44,7 +43,7 @@ function Tickets() {
         currentEvent ?
           (
             <>
-              <Card bought={true} image={currentEvent.imagem_evento} title={currentEvent.evento} line2={currentEvent.data_evento.slice(0,10)} line3={currentEvent.local}/>
+              <Card bought={true} image={currentEvent.imagem_evento} title={currentEvent.evento} line2={currentEvent.data_evento.slice(0,10)} line3={currentEvent.local} path={`/festival/${currentEvent.id_evento}`}/>
               <Bar icon1={ticket} icon2={qrCode} text={"1 x Venda Final"} />
               <Bar icon1={cashIcon} text={"Saldo"} price={cash} />
             </>)
@@ -55,18 +54,14 @@ function Tickets() {
       { futureEvents.length === 0 && <p>Sem festivais futuros</p> }
       {
         futureEvents.map((fe) =>
-          <Link to={`/festival/${fe.id_evento}`}>
-            <ListItem  image={fe.imagem_evento} title={fe.evento} line2={fe.data_evento.slice(0,10)} line3={fe.local} iconType={"ticket"}/>
-          </Link>
+            <ListItem  image={fe.imagem_evento} title={fe.evento} line2={fe.data_evento.slice(0,10)} line3={fe.local} iconType={"ticket"} path={`/festival/${fe.id_evento}`}/>
             )
       }
       <h1>Festivais passados</h1>
       { pastEvents.length === 0 && <p>Sem festivais passados</p> }
       {
         pastEvents.map((pe) =>
-          <Link to={`/festival/${pe.id_evento}`}>
-            <ListItem  image={pe.imagem_evento} title={pe.evento} line2={pe.data_evento.slice(0,10)} line3={pe.local} iconType={"info"}/>
-          </Link>
+            <ListItem  image={pe.imagem_evento} title={pe.evento} line2={pe.data_evento.slice(0,10)} line3={pe.local} iconType={"info"} path={`/festival/${pe.id_evento}`}/>
         )
       }
     </div>

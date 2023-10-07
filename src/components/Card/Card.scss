@@ -23,14 +23,17 @@
     right: 0;
     bottom: 0;
     left: 0;
-    justify-content: space-between;
     align-items: flex-end;
     padding: 5%;
-    .text {
-      padding-left: 5%;
-      .side-info {
-        margin-top: 5%;
-        display: inline-block;
+    a {
+      flex: 1;
+      .text {
+        padding-left: 5%;
+
+        .side-info {
+          margin-top: 5%;
+          display: inline-block;
+        }
       }
     }
   }

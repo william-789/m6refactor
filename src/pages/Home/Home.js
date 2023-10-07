@@ -1,12 +1,12 @@
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../context/UserContext";
 import axiosFest from "../../services/axiosfest";
-import {Link} from "react-router-dom";
 import Card from "../../components/Card/Card";
 import Bar from "../../components/Bar/Bar";
 import ticket from "../../assets/icons/nav_ticket_active.svg";
 import qrCode from "../../assets/icons/qr.svg";
 import cashIcon from "../../assets/icons/cash.svg";
+
 function Home() {
   const { userData, isFavorite } = useContext(UserContext)
   const { name } = userData
@@ -68,7 +68,7 @@ function Home() {
         currentEvent &&
           (
             <>
-              <Card bought={true} image={currentEvent.imagem_evento} title={currentEvent.evento} line2={currentEvent.data_evento.slice(0,10)} line3={currentEvent.local}/>
+              <Card bought={true} image={currentEvent.imagem_evento} title={currentEvent.evento} line2={currentEvent.data_evento.slice(0,10)} line3={currentEvent.local} path={`/festival/${currentEvent.id_evento}`}/>
               <Bar icon1={ticket} icon2={qrCode} text={"1 x Venda Final"} />
               <Bar icon1={cashIcon} text={"Saldo"} price={cash} />
             </>)
@@ -76,9 +76,7 @@ function Home() {
       <h1>Sugestões</h1>
       {
         futureEvents.map((e)=> (
-          <Link to={`/festival/${e.id}`}>
-            <Card image={e.imagem} title={e.designacao} line2={e.data.slice(0,10)} line3={e.local} price={e.preco_desde}/>
-          </Link>
+            <Card image={e.imagem} title={e.designacao} line2={e.data.slice(0,10)} line3={e.local} price={e.preco_desde} path={`/festival/${e.id}`}/>
         ))
       }
     </div>
