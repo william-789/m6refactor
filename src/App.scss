@@ -29,6 +29,13 @@ html, body {
   > h1 {
     margin: 10px 0;
   }
+  > p {
+    font-size: $medium-font;
+  }
+}
+a {
+  text-decoration: none;
+  color: inherit;
 }
 h1, h2, h3, p {
   margin: 0;
@@ -54,9 +61,9 @@ span {
   border-radius: 0.25rem;
 }
 .side-info.like {
-  width: 1.5rem;
-  height: 1.5rem;
-  border-radius: 0.75rem;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 1rem;
   cursor: pointer;
 }
 .container {
@@ -68,53 +75,7 @@ span {
 }
 hr {
   width: 100%;
-  margin-bottom: 10px;
+  margin: 15px 0;
 }
 
 // pills *******
-.pill {
-  width: 100%;
-  height: 5rem;
-  background-image: linear-gradient(270deg, $bg-gray 0%, $bg-main-dark 76.56%, $bg-main-dark 100%);
-  transition: background 2s ease;
-  display: flex;
-  margin-bottom: 10px;
-  border-radius: 2.5rem;
-  &:hover {
-    background-image: linear-gradient(270deg, $bg-orange 0%, $bg-main-dark 76.56%, $bg-main-dark 100%);
-    transition: background 1s ease;
-  }
-  .img-div, img {
-    width: 5rem;
-    height: 100%;
-    border-radius: 2.5rem;
-  }
-  .info {
-    flex: 1;
-    padding: 0.5rem 1.6rem 0.5rem 0.5rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  &.movement {
-    .img-div{
-      background-color: $bg-gray;
-      display: flex;
-      align-items: center;
-      img {
-        height: 50%;
-      }
-    }
-    &.green {
-      span {
-        color: $font-green;
-      }
-    }
-    &.available {
-      cursor: pointer;
-    }
-    &.unavailable * {
-      color: $font-unavailable;
-    }
-  }
-}

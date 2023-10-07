@@ -5,11 +5,14 @@ import Home from "./pages/Home/Home";
 import Search from "./pages/Search/Search";
 import Tickets from "./pages/Tickets/Tickets";
 import Profile from "./pages/Profile/Profile";
+import Festival from './pages/Festival/Festival';
+import Artist from './pages/Artist/Artist';
 
 import Navbar from "./components/Navbar/Navbar";
 import UserProvider from "./context/UserContext";
 
 function App() {
+
   return (
     <UserProvider>
       <Router location={"/"}>
@@ -20,6 +23,8 @@ function App() {
             <Route path="/search" component={Search} />
             <Route path="/tickets" component={Tickets}/>
             <Route path="/profile" component={Profile}/>
+            <Route path="/festival/:id_festival" component={Festival}/>
+            <Route path="/artist/:id_artist" component={Artist}/>
             <Redirect to={"/login"}/>
           </Switch>
           <Navbar/>
