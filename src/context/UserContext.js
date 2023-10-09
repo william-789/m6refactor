@@ -24,7 +24,7 @@ function UserProvider (props) {
     }
   }
 
-  return <UserContext.Provider value={{userData,setUserData, isLogged, isFavorite, toggleFavLocal, setFavorites}}>
+  return <UserContext.Provider value={{userData,setUserData, isLogged, isFavorite, favorites,toggleFavLocal, setFavorites}}>
     {props.children}
   </UserContext.Provider>
 }
