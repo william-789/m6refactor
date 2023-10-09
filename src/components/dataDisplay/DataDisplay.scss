@@ -1,0 +1,21 @@
+@import "../../variables";
+.xs-pill {
+  width: 80%;
+  background-color: $bg-gray;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  margin: 10px 0;
+  margin-left: 20%;
+  p {
+    text-align: right;
+  }
+  &.payment {
+    padding: 20px;
+  }
+  &.no-bg {
+    background: none;
+  }
+}

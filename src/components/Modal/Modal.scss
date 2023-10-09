@@ -1,0 +1,58 @@
+@import "../../variables";
+.Modal-bg {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .Modal {
+    width: 80%;
+    border-radius: 20px;
+    background-color: $bg-main-dark;
+    padding: 15px;
+    > p {
+      font-size: $medium-font;
+    }
+    > h1 {
+      margin: 10px 0;
+    }
+    .options-container {
+      margin-top: 10px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      .option {
+        padding: 10px;
+        background-color: $bg-gray;
+        display: flex;
+        align-items: center;
+        border-radius: 50px;
+        cursor: pointer;
+        &:hover {
+          background-color: $bg-orange;
+        }
+        > p {
+          font-size: $medium-font;
+          margin: 0 10px;
+        }
+        .svg-inline--fa {
+          font-size: 30px;
+          margin: 0 3px;
+        }
+        &.confirm {
+          flex: 1;
+        }
+        &.close {
+          margin-left: 10px;
+        }
+      }
+    }
+  }
+  &.closed {
+    display: none;
+  }
+}
