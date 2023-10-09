@@ -7,16 +7,18 @@ import { UserContext } from "../../context/UserContext";
 import ticketIcon from "../../assets/icons/ticket.svg";
 import ticketIconAvailable from "../../assets/icons/nav_ticket_active.svg";
 import Modal from "../../components/Modal/Modal";
+import PopUp from "../../components/PopUp/PopUp";
 
 function Festival() {
   const { id_festival } = useParams()
   const { isFavorite } = useContext(UserContext)
-  const [details,setDetails] = useState(null)
+  const [details,setDetails] = useState(null) // data ***
   const [shows, setShows] = useState(null)
   const [tickets, setTickets] = useState(null)
-  const [loading, setLoading] = useState(true)
-  const [modalOpen, setModalOpen] = useState(false)
+  const [modalOpen, setModalOpen] = useState(false) // modal ***
   const [ticketModal, setTicketModal] = useState({})
+  const [message, setMessage] = useState({}) // message ***
+  const [showMessage, setShowMessage] = useState(false)
 
   const getData = async  () => {
     await axiosFest.get(`/evento/${id_festival}/detalhes`)
@@ -32,7 +34,6 @@ function Festival() {
     await axiosFest.get(`/evento/${id_festival}/series_bilhetes/listar`)
       .then((res)=> {
         setTickets(res.data.series)
-        console.log(res.data.series)
       })
   }
 
@@ -48,6 +49,7 @@ function Festival() {
 
   return(
     <div className={"Festival page"}>
+      <PopUp message={message} setShowMessage={setShowMessage} showMessage={showMessage}/>
       <Card clear={true} image={details.imagem} liked={isFavorite(details.id,"evento")} favType={"evento"} idEl={id_festival}/>
       <div>
         <h1>{details.designacao}</h1>
@@ -71,7 +73,7 @@ function Festival() {
           <Pill key={t.id+"t"} id={t.id} image={t.disponivel ? ticketIconAvailable : ticketIcon} title={t.designacao} line2={t.disponivel ? t.limite_vendas.slice(0,10) :"Indisponível"} price={t.custo} available={t.disponivel} openModal={setModalOpen} passData={setTicketModal}/>
         )
       }
-      <Modal event={details.designacao} eventId={details.id} open={modalOpen} setOpen={setModalOpen} {...ticketModal} />
+      <Modal event={details.designacao} eventId={details.id} open={modalOpen} setOpen={setModalOpen} {...ticketModal} setMessage={setMessage} setShowMessage={setShowMessage} />
     </div>
   )
 }

@@ -9,12 +9,18 @@ import DataDisplay from "../dataDisplay/DataDisplay";
 import axiosFest from "../../services/axiosfest";
 
 
-function Modal({event, eventId, open, setOpen, ...props}) {
-  console.log("props modal",props)
+function Modal({event, eventId, open, setOpen, setMessage, setShowMessage, ...props}) {
   const { userData } = useContext(UserContext)
   const buyTicket = () => {
-    console.log("evento",eventId,"nome",userData.name,"email",userData.email,"serie", props.id)
     axiosFest.post("/vendas/bilhetes/comprar",{evento:eventId, nome: userData.name, email: userData.email, serie: props.id})
+      .then((res) => {
+        setMessage({text: "Compra registada com sucesso", type: "sucess"})
+      }).catch((e) => {
+        setMessage({text: "Ocorreu um erro ao registar a compra!", type: "error"})
+      }).then(() => {
+      setShowMessage(true)
+      setOpen(false)
+    })
   }
 
 

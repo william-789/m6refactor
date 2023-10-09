@@ -1,0 +1,24 @@
+@import "../../variables";
+.PopUp {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  max-width: 500px;
+  padding: 20px;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 30px;
+  transition: top 0.5s ease-in-out;
+  opacity: 1;
+  p {
+    font-size: $medium-font;
+  }
+  &.invisible {
+    top: -10vh;
+    opacity: 0;
+    transition: top 0.5s ease-in-out, opacity 0.5s ease-in-out;
+  }
+}
