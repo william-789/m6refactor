@@ -7,6 +7,7 @@ import ListItem from "../../components/List_Item/ListItem"
 import ticket from "../../assets/icons/nav_ticket_active.svg"
 import qrCode from "../../assets/icons/qr.svg"
 import cashIcon from "../../assets/icons/cash.svg"
+import Empty from "../../components/Empty/Empty";
 
 function Tickets() {
   const { userData, isFavorite } = useContext(UserContext)
@@ -51,18 +52,18 @@ function Tickets() {
               <Bar icon1={ticket} icon2={qrCode} text={"1 x Venda Final"} />
               <Bar icon1={cashIcon} text={"Saldo"} price={cash} />
             </>)
-          : (<p>Sem eventos a ocorrer</p>)
+          : (<Empty item={"eventos a ocorrer"}/>)
       }
       <hr/>
       <h1>Em breve</h1>
-      { futureEvents.length === 0 && <p>Sem festivais futuros</p> }
+      { futureEvents.length === 0 && <Empty item={"festivais futuros"}/> }
       {
         futureEvents.map((fe) =>
             <ListItem  image={fe.imagem_evento} title={fe.evento} line2={fe.data_evento.slice(0,10)} line3={fe.local} iconType={"ticket"} path={`/festival/${fe.id_evento}`} idEl={fe.id_evento} favType={"evento"} liked={isFavorite(fe.id_evento,"evento")}/>
             )
       }
       <h1>Festivais passados</h1>
-      { pastEvents.length === 0 && <p>Sem festivais passados</p> }
+      { pastEvents.length === 0 && <Empty item={"festivais passados"}/> }
       {
         pastEvents.map((pe) =>
             <ListItem  image={pe.imagem_evento} title={pe.evento} line2={pe.data_evento.slice(0,10)} line3={pe.local} iconType={"info"} path={`/festival/${pe.id_evento}`} idEl={pe.id_evento} favType={"evento"} liked={isFavorite(pe.id_evento,"evento")}/>
