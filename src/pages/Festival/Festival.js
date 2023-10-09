@@ -68,10 +68,10 @@ function Festival() {
       <h1>Bilhetes</h1>
       {
         tickets.map((t)=>
-          <Pill key={t.id+"t"} image={t.disponivel ? ticketIconAvailable : ticketIcon} title={t.designacao} line2={t.disponivel ? t.limite_vendas.slice(0,10) :"Indisponível"} price={t.custo} available={t.disponivel} openModal={setModalOpen} passData={setTicketModal}/>
+          <Pill key={t.id+"t"} id={t.id} image={t.disponivel ? ticketIconAvailable : ticketIcon} title={t.designacao} line2={t.disponivel ? t.limite_vendas.slice(0,10) :"Indisponível"} price={t.custo} available={t.disponivel} openModal={setModalOpen} passData={setTicketModal}/>
         )
       }
-      <Modal event={details.designacao} open={modalOpen} setOpen={setModalOpen} {...ticketModal} />
+      <Modal event={details.designacao} eventId={details.id} open={modalOpen} setOpen={setModalOpen} {...ticketModal} />
     </div>
   )
 }

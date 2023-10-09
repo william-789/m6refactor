@@ -13,7 +13,7 @@ function Home() {
   const [currentEvent, setCurrentEvent] = useState(null)
   const [cash, setCash] = useState(0)
   const [futureEvents, setFutureEvents] = useState(null)
-  
+
   async function getPrices(events) {
     const eventsWithPrice = await Promise.all(
       events.map(async (e) => {
@@ -41,6 +41,9 @@ function Home() {
       .then((res) => {
         setCurrentEvent(res.data.atuais[0])
         if(currentEvent) setCash(currentEvent.conta_cashless.valor_atual)
+      }).catch((e)=>{
+        // console.log(e)
+        setCurrentEvent(undefined)
       })
     await axiosFest.get("/evento/listar",
       {params:{
@@ -55,7 +58,7 @@ function Home() {
   useEffect(()=>{
     getData();
   }, [])
-  
+
   if(!(currentEvent !== null && futureEvents)) {
     return (
       <div className={"Home page"}>A carregar...</div>

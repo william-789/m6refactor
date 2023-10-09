@@ -23,7 +23,11 @@ function Tickets() {
       if(currentEvent) setCash(currentEvent.conta_cashless.valor_atual)
       setFutureEvents(res.data.futuros)
       setPastEvents(res.data.passados)
-    })
+    }).catch((e) => {
+        setCurrentEvent(undefined)
+        setFutureEvents([])
+        setPastEvents([])
+      })
   }
 
   useEffect(()=>{

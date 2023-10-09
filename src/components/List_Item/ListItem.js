@@ -27,10 +27,12 @@ function ListItem({round = false, image, title, line2, line3, liked = false, fav
 
 export default ListItem
 
-function Pill({ image, title, line2, line3, price = 0, available, openModal, passData }) {
+function Pill({ id, image, title, line2, line3, price = 0, available, onModal = false, openModal, passData }) {
   const handleClick = () => {
-    openModal(true);
-    passData({ title, line2, line3, price, available })
+    if(!onModal) {
+      openModal(true);
+      passData({title, line2, line3, price, available, id})
+    }
   };
 
   return (

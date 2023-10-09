@@ -17,6 +17,9 @@ function Login() {
     await axiosFest.get("/participante/favoritos/listar", {params: {participante: email}})
         .then((res) => {
           setFavorites(res.data.favoritos)
+        }).catch((e)=>{
+          console.log(e)
+          setFavorites([])
         })
   }
 
