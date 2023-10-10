@@ -52,7 +52,26 @@ function Pill({ id, image, title, line2, line3, price = 0, available, onModal = 
   );
 }
 
+function MovementItem ({icon, value, data, hora, saldo, tipo}) {
+  return (
+    <div className={`pill s-pill ${tipo}`}>
+      <div className="img-div">
+        <img alt="" src={icon} />
+      </div>
+      <div className="info">
+        <div className="text">
+          <span>{value.toFixed(2)} €</span>
+          <p>{data} {hora}</p>
+        </div>
+        <p className="side-info">{saldo.toFixed(2)} €</p>
+      </div>
+    </div>
+
+)
+}
+
 export {
   ListItem,
-  Pill
+  Pill,
+  MovementItem
 }

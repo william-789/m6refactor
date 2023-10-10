@@ -73,4 +73,24 @@
       }
     }
   }
+  &.s-pill {
+    height: 4rem;
+    border-radius: 2rem;
+    .img-div img {
+      width: 4rem;
+      border-radius: 2rem;
+    }
+    .info {
+      .text {
+        span {
+          font-size: $title;
+        }
+      }
+    }
+    &.carregamento {
+      .info .text span {
+        color: $font-green;
+      }
+    }
+  }
 }
