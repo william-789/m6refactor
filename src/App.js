@@ -10,7 +10,6 @@ import Artist from './pages/Artist/Artist';
 
 import Navbar from "./components/Navbar/Navbar";
 import UserProvider from "./context/UserContext";
-import Splashscreen from "./components/Splashscreen/Splashscreen";
 
 function App() {
 
@@ -18,7 +17,6 @@ function App() {
     <UserProvider>
       <Router location={"/"}>
         <div className="App">
-          <Splashscreen />
           <Switch>
             <Route path="/login" component={Login}/>
             <Route path="/home" component={Home}/>
