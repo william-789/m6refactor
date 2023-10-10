@@ -1,6 +1,7 @@
 @import "../../variables";
 .xs-pill {
   width: 80%;
+  min-width: 220px;
   background-color: $bg-gray;
   border-radius: 20px;
   display: flex;
