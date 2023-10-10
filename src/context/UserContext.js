@@ -1,27 +1,27 @@
 import React, { useState } from "react";
-import axiosFest from "../services/axiosfest";
 
 const UserContext = React.createContext({});
 
 function UserProvider (props) {
   const [userData, setUserData] = useState({}) // {name: , email:}
-  const [favorites, setFavorites] = useState([])
+  const [favorites, setFavorites] = useState({})
 
   function isLogged() {
     return !!(userData.name && userData.email)
   }
 
   function isFavorite(idEl, type) {
-    return favorites.some((el) => el.id === idEl && el.tipo === type)
+    return favorites[type].includes(idEl)
   }
 
   function toggleFavLocal(id, tipo) {
+    const updatedFavorites = { ...favorites }
     if(isFavorite(id, tipo)) {
-      const listWithoutEl = favorites.filter((el) => el.id !== id && el.tipo !== tipo)
-      setFavorites(listWithoutEl)
+      updatedFavorites[tipo] = updatedFavorites[tipo].filter((el) => el !== id);
     } else {
-      setFavorites([...favorites, { id, tipo }])
+      updatedFavorites[tipo].push(id);
     }
+    setFavorites(updatedFavorites)
   }
 
   return <UserContext.Provider value={{userData,setUserData, isLogged, isFavorite, favorites,toggleFavLocal, setFavorites}}>

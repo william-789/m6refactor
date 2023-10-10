@@ -50,7 +50,7 @@ function Festival() {
   return(
     <div className={"Festival page"}>
       <PopUp message={message} setShowMessage={setShowMessage} showMessage={showMessage}/>
-      <Card clear={true} image={details.imagem} liked={isFavorite(details.id,"evento")} favType={"evento"} idEl={id_festival}/>
+      <Card clear={true} image={details.imagem} liked={isFavorite(details.id,"eventos")} favType={"evento"} idEl={id_festival}/>
       <div>
         <h1>{details.designacao}</h1>
         <span>{details.data.slice(0,10)}</span>
@@ -60,7 +60,7 @@ function Festival() {
       <h1>Concertos</h1>
       {
         shows.map((s)=>
-        <ListItem key={s.id+"s"} image={s.imagem} title={s.artista} line2={s.data_hora_inicio.slice(0,10)} line3={s.palco} path={`/artist/${s.artista_id}`} idEl={s.artista_id} favType={"artist"} liked={isFavorite(s.artista_id,"artista")}/>
+        <ListItem key={s.id+"s"} image={s.imagem} title={s.artista} line2={s.data_hora_inicio.slice(0,10)} line3={s.palco} path={`/artist/${s.artista_id}`} idEl={s.artista_id} favType={"artist"} liked={isFavorite(s.artista_id,"artistas")}/>
         )
       }
       <hr/>

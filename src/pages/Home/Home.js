@@ -79,7 +79,7 @@ function Home() {
       <h1>Sugestões</h1>
       {
         futureEvents.map((e)=> (
-            <Card image={e.imagem} title={e.designacao} line2={e.data.slice(0,10)} line3={e.local} price={e.preco_desde} path={`/festival/${e.id}`} liked={isFavorite(e.id,"evento")} favType={"evento"} idEl={e.id}/>
+            <Card image={e.imagem} title={e.designacao} line2={e.data.slice(0,10)} line3={e.local} price={e.preco_desde} path={`/festival/${e.id}`} liked={isFavorite(e.id,"eventos")} favType={"evento"} idEl={e.id}/>
         ))
       }
     </div>

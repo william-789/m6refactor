@@ -27,11 +27,11 @@ function Artist() {
   }
   return(
     <div className={"Artist page"}>
-      <Banner liked={isFavorite(artist.id,"artista")} idFav={artist.id} favType={"artist"} image={artist.imagem} nome={artist.nome}/>
+      <Banner liked={isFavorite(artist.id,"artistas")} idFav={artist.id} favType={"artist"} image={artist.imagem} nome={artist.nome}/>
         <h1>Próximos concertos</h1>
         {
           shows.map((s) =>
-          <ListItem key={s.id+"s"} image={s.imagem} title={s.evento} line2={s.data_hora_inicio.slice(0,10)} line3={s.palco} path={`/festival/${s.evento_id}`} liked={isFavorite(s.evento_id,"evento")} />
+          <ListItem key={s.id+"s"} image={s.imagem} title={s.evento} line2={s.data_hora_inicio.slice(0,10)} line3={s.palco} path={`/festival/${s.evento_id}`} liked={isFavorite(s.evento_id,"eventos")} />
           )
         }
         <h1>Sobre</h1>

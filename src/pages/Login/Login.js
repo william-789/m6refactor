@@ -14,12 +14,12 @@ function Login() {
   const { control, handleSubmit, formState: { errors } } = useForm();
 
   const getFav = async(email) => {
-    await axiosFest.get("/participante/favoritos/listar", {params: {participante: email}})
+    await axiosFest.get("/participante/favoritos/listar", {params: {participante: email, apenas_ids: 1}})
         .then((res) => {
-          setFavorites(res.data.favoritos)
+          setFavorites(res.data.ids_favoritos)
         }).catch((e)=>{
           console.log(e)
-          setFavorites([])
+          setFavorites({"eventos":[], "artistas": []})
         })
   }
 
