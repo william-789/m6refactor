@@ -10,6 +10,7 @@ import Artist from './pages/Artist/Artist';
 
 import Navbar from "./components/Navbar/Navbar";
 import UserProvider from "./context/UserContext";
+import Cashless from "./pages/Cashless/Cashless";
 
 function App() {
 
@@ -25,6 +26,7 @@ function App() {
             <Route path="/profile" component={Profile}/>
             <Route path="/festival/:id_festival" component={Festival}/>
             <Route path="/artist/:id_artist" component={Artist}/>
+            <Route path="/cashless/:id_festival" component={Cashless}/>
             <Redirect to={"/login"}/>
           </Switch>
           <Navbar/>

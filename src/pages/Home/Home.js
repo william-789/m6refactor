@@ -6,6 +6,7 @@ import Bar from "../../components/Bar/Bar";
 import ticket from "../../assets/icons/nav_ticket_active.svg";
 import qrCode from "../../assets/icons/qr.svg";
 import cashIcon from "../../assets/icons/cash.svg";
+import { Link } from "react-router-dom";
 
 function Home() {
   const { userData, isFavorite } = useContext(UserContext)
@@ -73,7 +74,9 @@ function Home() {
             <>
               <Card bought={true} image={currentEvent.imagem_evento} title={currentEvent.evento} line2={currentEvent.data_evento.slice(0,10)} line3={currentEvent.local} path={`/festival/${currentEvent.id_evento}`}/>
               <Bar icon1={ticket} icon2={qrCode} text={"1 x Venda Final"} />
-              <Bar icon1={cashIcon} text={"Saldo"} price={cash} />
+              <Link to={`/cashless/${currentEvent.id}`}>
+                <Bar icon1={cashIcon} text={"Saldo"} price={cash} />
+              </Link>
             </>)
       }
       <h1>Sugestões</h1>
