@@ -2,7 +2,7 @@ import { useState, useContext, useEffect } from "react"
 import { UserContext } from "../../context/UserContext"
 import axiosFest from "../../services/axiosfest"
 import Card from "../../components/Card/Card"
-import Bar from "../../components/Bar/Bar";
+import Bar, {NoticeBar} from "../../components/Bar/Bar";
 import ListItem from "../../components/List_Item/ListItem"
 import ticket from "../../assets/icons/nav_ticket_active.svg"
 import qrCode from "../../assets/icons/qr.svg"
@@ -15,9 +15,12 @@ function Tickets() {
   const [cash, setCash] = useState(0)
   const [futureEvents, setFutureEvents] = useState(null)
   const [pastEvents, setPastEvents] = useState(null)
+  const [pendingExist, setPendingExist] = useState(false)
 
   const getData = async() => {
     const { email } = userData
+    await axiosFest.get("/participante/pagamentos/existem_pendentes", {params: {participante: email}})
+      .then((res) => setPendingExist(res.data.existem_pendentes)).catch(e => console.log(e))
     await axiosFest.get("participante/bilhetes/listar", {params: {participante: email}})
     .then((res) => {
       setCurrentEvent(res.data.atuais[0])
@@ -43,6 +46,7 @@ function Tickets() {
 
   return (
     <div className={"Tickets page"}>
+      {pendingExist && <NoticeBar />}
       <h1>A decorrer</h1>
       {
         currentEvent ?

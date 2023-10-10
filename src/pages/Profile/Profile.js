@@ -6,6 +6,7 @@ import ListItem, {Pill} from "../../components/List_Item/ListItem";
 import Pagination from "../../components/Pagination/Pagination";
 import cardIcon from "../../assets/icons/card.svg"
 import DataDisplay from "../../components/dataDisplay/DataDisplay";
+import {NoticeBar} from "../../components/Bar/Bar";
 
 function Profile() {
   const { userData } = useContext(UserContext)
@@ -92,6 +93,7 @@ function Profile() {
 
   return (
     <div className={"Profile page"}>
+      {pendingExist && <NoticeBar />}
       <h1>Favoritos</h1>
       {
         favProfile.length === 0 ? <Empty item={"favoritos"}/> :

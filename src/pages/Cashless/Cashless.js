@@ -11,6 +11,7 @@ import { useForm } from "react-hook-form";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPlus} from "@fortawesome/free-solid-svg-icons";
 import PopUp from "../../components/PopUp/PopUp";
+import {NoticeBar} from "../../components/Bar/Bar";
 
 
 function Cashless() {
@@ -56,6 +57,7 @@ function Cashless() {
   return (
     <div className={"Cashless page"}>
       <PopUp message={message} setShowMessage={setShowMessage} showMessage={showMessage}/>
+      {pedingPayments.length > 0 && <NoticeBar />}
       <div className={"saldo"}>
         <span>{saldo.toFixed(2)} €</span>
         <p>Saldo Atual</p>
