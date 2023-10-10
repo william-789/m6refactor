@@ -27,7 +27,7 @@ function ListItem({round = false, image, title, line2, line3, liked = false, fav
 
 export default ListItem
 
-function Pill({ id, image, title, line2, line3, price = 0, available, onModal = false, openModal, passData }) {
+function Pill({ id, image, title, line2, line3, price = 0, available, onModal = false, openModal, passData, pay = false, paid}) {
   const handleClick = () => {
     if(!onModal) {
       openModal(true);
@@ -36,7 +36,7 @@ function Pill({ id, image, title, line2, line3, price = 0, available, onModal = 
   };
 
   return (
-    <div className={`pill movement ${ available ? "available" : 'unavailable' }`} onClick={available ? handleClick : null}>
+    <div className={`pill movement ${available ? "available" : !pay && 'unavailable' } ${paid && "green"}`} onClick={available ? handleClick : null}>
       <div className="img-div">
         <img alt={title} src={image} />
       </div>
