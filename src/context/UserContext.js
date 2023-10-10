@@ -4,7 +4,7 @@ const UserContext = React.createContext({});
 
 function UserProvider (props) {
   const [userData, setUserData] = useState({}) // {name: , email:}
-  const [favorites, setFavorites] = useState({})
+  const [favorites, setFavorites] = useState({"eventos":[], "artistas": []})
 
   function isLogged() {
     return !!(userData.name && userData.email)
